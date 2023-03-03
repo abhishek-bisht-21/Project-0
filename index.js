@@ -1,4 +1,6 @@
+const axios = require('axios');
 const { Telegraf } = require('telegraf');
+
 
 /**
  * How to get the secret token to create the bot?
@@ -34,6 +36,12 @@ const bot = new Telegraf('6017598983:AAF2h5ST4JYEVsapMxq7Fl-Eejdf0hconWQ')
 bot.start((ctx) => ctx.reply('Welcome to the new Coding Bot from Abhishek'));
 
 bot.command('binarySearchjs', (ctx) => ctx.reply(binarySearch));
+
+bot.command('roottonodecpp', async function (ctx) {
+	const response = await axios.get('https://raw.githubusercontent.com/abhishek-bisht-21/DSA_PRACTICE/main/Binary%20Tree/root_to_node_path.cpp')
+	console.log(response.data);
+	return ctx.reply(response.data);
+})
 
 bot.on('sticker', (ctx) => ctx.reply('❤️'));
 
